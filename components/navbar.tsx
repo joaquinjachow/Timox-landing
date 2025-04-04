@@ -1,5 +1,5 @@
 "use client"
-
+import Image from "next/image"
 import { useState } from "react"
 import Link from "next/link"
 import { Menu, X } from "lucide-react"
@@ -20,9 +20,8 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <span className="text-2xl font-bold text-[rgb(46,49,145)]">TIMOX</span>
+            <Image src="/timox-rgb.svg" alt="Logo" width={175} height={175} />
           </Link>
-
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
             {navLinks.map((link) => (

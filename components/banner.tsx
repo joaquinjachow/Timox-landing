@@ -3,25 +3,31 @@
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+import Link from "next/link"
 
 const banners = [
   {
     id: 1,
     image: "/placeholder.svg?height=600&width=1200",
-    title: "Discos de Corte de Alta Calidad",
-    description: "Precisión y durabilidad garantizada para cada proyecto",
+    title: "Descubrí Todos Nuestros Productos",
+    description: "Calidad, variedad y precios competitivos",
   },
   {
     id: 2,
     image: "/placeholder.svg?height=600&width=1200",
-    title: "Herramientas Profesionales",
-    description: "Soluciones completas para construcción y mantenimiento",
+    title: "¿Querés Comprar o Vender?",
+    description: "Te acompañamos en cada paso del proceso",
+    dualButtons: true,
   },
   {
     id: 3,
     image: "/placeholder.svg?height=600&width=1200",
     title: "Productos Timox",
     description: "La mejor relación calidad-precio del mercado",
+    button: {
+      text: "Ver Productos",
+      href: "/productos",
+    },
   },
 ]
 
@@ -36,7 +42,6 @@ export default function Banner() {
     setCurrentSlide((prev) => (prev === 0 ? banners.length - 1 : prev - 1))
   }
 
-  // Auto-advance slides
   useEffect(() => {
     const interval = setInterval(nextSlide, 5000)
     return () => clearInterval(interval)
@@ -61,9 +66,34 @@ export default function Banner() {
               className="object-cover"
               priority={index === 0}
             />
-            <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center text-white p-4">
-              <h2 className="text-3xl md:text-5xl font-bold mb-4">{banner.title}</h2>
+            <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center text-white p-4 space-y-4">
+              <h2 className="text-3xl md:text-5xl font-bold">{banner.title}</h2>
               <p className="text-lg md:text-xl max-w-2xl">{banner.description}</p>
+
+              {/* Botón único */}
+              {banner.button && (
+                <Link href={banner.button.href}>
+                  <button className="mt-4 bg-white text-black px-6 py-2 rounded-full font-semibold hover:bg-gray-200 transition">
+                    {banner.button.text}
+                  </button>
+                </Link>
+              )}
+
+              {/* Botones dobles */}
+              {banner.dualButtons && (
+                <div className="flex space-x-4 mt-4">
+                  <a href="#forms">
+                    <button className="bg-white text-black px-6 py-2 rounded-full font-semibold hover:bg-gray-200 transition">
+                      Quiero Comprar
+                    </button>
+                  </a>
+                  <a href="#forms">
+                    <button className="bg-white text-black px-6 py-2 rounded-full font-semibold hover:bg-gray-200 transition">
+                      Quiero Vender
+                    </button>
+                  </a>
+                </div>
+              )}
             </div>
           </div>
         ))}
@@ -99,4 +129,3 @@ export default function Banner() {
     </div>
   )
 }
-
