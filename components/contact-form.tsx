@@ -98,7 +98,7 @@ export default function ContactForm() {
                   required
                 />
               </div>
-              <Button type="submit" className="w-full bg-[rgb(46,49,145)] hover:bg-[rgb(36,39,135)]">
+              <Button type="submit" className="w-full text-white bg-[rgb(46,49,145)] hover:bg-[rgb(36,39,135)]">
                 Enviar Mensaje
               </Button>
             </form>

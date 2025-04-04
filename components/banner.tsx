@@ -82,12 +82,12 @@ export default function Banner() {
               {/* Botones dobles */}
               {banner.dualButtons && (
                 <div className="flex space-x-4 mt-4">
-                  <a href="#forms">
+                  <a href="#contacto">
                     <button className="bg-white text-black px-6 py-2 rounded-full font-semibold hover:bg-gray-200 transition">
                       Quiero Comprar
                     </button>
                   </a>
-                  <a href="#forms">
+                  <a href="#contacto">
                     <button className="bg-white text-black px-6 py-2 rounded-full font-semibold hover:bg-gray-200 transition">
                       Quiero Vender
                     </button>
